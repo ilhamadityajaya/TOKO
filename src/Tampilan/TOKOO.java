@@ -4,6 +4,9 @@
  */
 package Tampilan;
 
+import java.sql.SQLException;
+import kelas.user;
+
 /**
  *
  * @author ASUS
@@ -36,9 +39,9 @@ public class TOKOO extends javax.swing.JFrame {
         TEMAIL = new javax.swing.JTextField();
         TPASSWORD = new javax.swing.JTextField();
         TFULLNAME = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        TSTATUS = new javax.swing.JComboBox<>();
+        TTAMBAH = new javax.swing.JButton();
+        THAPUS = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,16 +60,16 @@ public class TOKOO extends javax.swing.JFrame {
 
         jLabel6.setText("STATUS");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Non Aktif", " " }));
+        TSTATUS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Non Aktif", " " }));
 
-        jButton1.setText("tambah");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        TTAMBAH.setText("tambah");
+        TTAMBAH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                TTAMBAHActionPerformed(evt);
             }
         });
 
-        jButton2.setText("hapus");
+        THAPUS.setText("hapus");
 
         jButton3.setText("jButton3");
 
@@ -89,7 +92,7 @@ public class TOKOO extends javax.swing.JFrame {
                                     .addComponent(jLabel6))
                                 .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TSTATUS, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(TFULLNAME, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
@@ -107,9 +110,9 @@ public class TOKOO extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(jButton1)
+                        .addComponent(TTAMBAH)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(THAPUS)
                         .addGap(155, 155, 155)))
                 .addComponent(jButton3)
                 .addGap(87, 87, 87))
@@ -142,11 +145,11 @@ public class TOKOO extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TSTATUS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(TTAMBAH)
+                    .addComponent(THAPUS)
                     .addComponent(jButton3))
                 .addGap(61, 61, 61))
         );
@@ -154,14 +157,28 @@ public class TOKOO extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void TTAMBAHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TTAMBAHActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try {
+            user user = new user();
+            user.setUser_name(TUSER.getText());
+            user.setUser_email(TEMAIL.getText());
+            user.setUser_password(TPASSWORD.getText());
+            user.setUser_fullname(TFULLNAME.getText());
+            if (TSTATUS.getSelectedItem().equals("Aktif")) {
+                user.setUser_status(1);
+            } else {
+                user.setUser_status(0);
+            }
+            user.tambahUser();
+        } catch (SQLException sQLException) {
+        }
+    }//GEN-LAST:event_TTAMBAHActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -196,12 +213,12 @@ public class TOKOO extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TEMAIL;
     private javax.swing.JTextField TFULLNAME;
+    private javax.swing.JButton THAPUS;
     private javax.swing.JTextField TPASSWORD;
+    private javax.swing.JComboBox<String> TSTATUS;
+    private javax.swing.JButton TTAMBAH;
     private javax.swing.JTextField TUSER;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

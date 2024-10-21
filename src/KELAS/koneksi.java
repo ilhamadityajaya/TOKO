@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 /**
  *
- *@author ASUS
+ * @author WINDOWS 10
  */
 public class koneksi {
     private Connection konekSQL;
