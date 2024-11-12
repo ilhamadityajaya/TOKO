@@ -31,4 +31,6 @@ public class koneksi {
         return konekSQL;
         
     }
+
+    
 }
