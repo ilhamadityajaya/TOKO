@@ -328,7 +328,7 @@ public class FramProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_PtambahActionPerformed
 
     private void PUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PUbahActionPerformed
-         try {
+        try {
             product pdc = new product();
             category ct = new category();
             pdc.setProduct_id(Integer.parseInt(Pid.getText()));
@@ -351,11 +351,11 @@ public class FramProduct extends javax.swing.JFrame {
 
     private void PProducMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PProducMouseClicked
         int baris = PProduc.rowAtPoint(evt.getPoint());
-        String pdID =  PProduc.getValueAt(baris, 0).toString();
-        String pdName =  PProduc.getValueAt(baris, 1).toString();
-        String pdDesc =  PProduc.getValueAt(baris, 2).toString();
-        String pdPrice =  PProduc.getValueAt(baris, 3).toString();
-        String pdCatid =  PProduc.getValueAt(baris, 4).toString();
+        String pdID = PProduc.getValueAt(baris, 0).toString();
+        String pdName = PProduc.getValueAt(baris, 1).toString();
+        String pdDesc = PProduc.getValueAt(baris, 2).toString();
+        String pdPrice = PProduc.getValueAt(baris, 3).toString();
+        String pdCatid = PProduc.getValueAt(baris, 4).toString();
 
         Pid.setText(pdID);
         Pid.setEditable(false);

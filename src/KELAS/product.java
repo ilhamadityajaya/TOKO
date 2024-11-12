@@ -17,16 +17,17 @@ import javax.swing.JOptionPane;
  * @author ASUS
  */
 public class product {
+
     int product_id, product_price, product_cat_id;
     String product_name, product_desc;
-    
+
     private Connection konek;
     private PreparedStatement ps;
     private Statement st;
     private ResultSet rs;
     private String query;
-    
-    public product()throws SQLException{
+
+    public product() throws SQLException {
         koneksi koneksi = new koneksi();
         konek = koneksi.konekDB();
     }
@@ -70,7 +71,8 @@ public class product {
     public void setProduct_desc(String product_desc) {
         this.product_desc = product_desc;
     }
-    public void tambahProduct() throws SQLException{
+
+    public void tambahProduct() throws SQLException {
         String quey = "INSERT INTO product VALUES(?,?,?,?,?)";
         try {
             ps = konek.prepareStatement(quey);
@@ -83,12 +85,13 @@ public class product {
             ps.close();
             JOptionPane.showMessageDialog(null, "Data Berhasil Ditambahkan");
         } catch (SQLException sQLException) {
-            JOptionPane.showMessageDialog(null,"Data Gagal Ditambahkan");
-        
+            JOptionPane.showMessageDialog(null, "Data Gagal Ditambahkan");
+
         }
     }
-       public ResultSet tampilProduct() {
-        
+
+    public ResultSet tampilProduct() {
+
         query = "SELECT  "
                 + "p.product_id ,"
                 + "p.product_name ,  "
@@ -98,15 +101,15 @@ public class product {
                 + "FROM product p "
                 + "JOIN  category c ON p.product_cat_id = c.category_id";
         try {
-            st = konek.createStatement();            
+            st = konek.createStatement();
             rs = st.executeQuery(query);
         } catch (SQLException sQLException) {
             JOptionPane.showMessageDialog(null, "Data Gagal Tampil");
         }
         return rs;
     }
-       
-    public void hapusProduk(){
+
+    public void hapusProduk() {
         query = "DELETE FROM product WHERE product_id = ?";
         try {
             ps = konek.prepareStatement(query);
@@ -118,6 +121,7 @@ public class product {
             JOptionPane.showInputDialog(null, "product Gagal dihapus");
         }
     }
+
     public void ubahProduct() {
 
         query = "UPDATE product SET "
@@ -145,8 +149,7 @@ public class product {
         }
     }
 
-    
-        public ResultSet comboCat() {
+    public ResultSet comboCat() {
         query = "SELECT  p.product_cat_id, c.category_name FROM product p JOIN category;";
         try {
             st = konek.createStatement();
@@ -171,5 +174,3 @@ public class product {
         return rs;
     }
 }
-
-    

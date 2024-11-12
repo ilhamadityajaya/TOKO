@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
  *
  * @author ASUS
  */
-
 public class user {
 
     String user_name, user_email, user_password, user_fullname;

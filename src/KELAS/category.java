@@ -48,7 +48,7 @@ public class category {
         this.category_name = category_name;
     }
 
-       public void tambahCategory() {
+    public void tambahCategory() {
         query = "INSERT INTO category VALUES (?,?)";
 
         try {
